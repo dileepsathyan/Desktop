@@ -81,31 +81,40 @@ password="IZWevixF2plPmzpV",
 database='safehouse_db'
 
 
-# engine = create_engine('mysql+pymysql://{user}:{password}@:3306/{database}')
+engine = pymysql.connect(host='10.80.144.42',
+                        user="dsathyan",
+                        password="IZWevixF2plPmzpV",
+                        database='safehouse_db')
+                         
+query = "SELECT * FROM safehouse_db.backend_sendgridgeneral"
 
-# query = "SELECT * FROM {database}.backend_sendgridgeneral"
 
-# df = pd.read_sql(query, engine)
-# print(df.head())
+cursor= engine.cursor()
+cursor.execute(query)
+
+results=cursor.fetchall()
+for result in results:
+    print (result)
+
 
 
 
 ####################################################################################################################
 
 # # # Connect to the database
-connection = pymysql.connect(   host='10.80.144.42',
-                                user="dsathyan",
-                                password="IZWevixF2plPmzpV",
-                                database='safehouse_db')    
+# connection = pymysql.connect(   host='10.80.144.42',
+#                                 user="dsathyan",
+#                                 password="IZWevixF2plPmzpV",
+#                                 database='safehouse_db')    
 
-# create cursor
-cursor= connection.cursor()
+# # create cursor
+# cursor= connection.cursor()
 
-# # Execute query
-sql = "SELECT * FROM backend_sendgridgeneral"
-cursor.execute(sql)
+# # # Execute query
+# sql = "SELECT * FROM backend_sendgridgeneral"
+# cursor.execute(sql)
 
-# # Fetch all the records
-result = cursor.fetchall()
-for i in result:
-    print(i)
+# # # Fetch all the records
+# result = cursor.fetchall()
+# for i in result:
+#     print(i)
